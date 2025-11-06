@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Audio X9 - Premium Wireless Headphones</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for font and transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Utility classes for theme colors */
+        .primary-color { color: theme('colors.indigo.600'); }
+        .dark .primary-color { color: theme('colors.indigo.400'); }
+        .bg-primary { background-color: theme('colors.indigo.600'); }
+        .hover\:bg-primary-dark:hover { background-color: theme('colors.indigo.700'); }
+        .dark .bg-primary { background-color: theme('colors.indigo.500'); }
+        .dark .hover\:bg-primary-dark:hover { background-color: theme('colors.indigo.600'); }
+
+        /* Custom style for the color swatch interaction */
+        .color-swatch {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        .color-swatch.selected {
+            border: 3px solid theme('colors.indigo.400');
+            box-shadow: 0 0 0 2px theme('colors.white'), 0 0 0 4px theme('colors.indigo.600');
+        }
+        .dark .color-swatch.selected {
+            border: 3px solid theme('colors.indigo.300');
+            box-shadow: 0 0 0 2px theme('colors.gray.900'), 0 0 0 4px theme('colors.indigo.500');
+        }
+        
+        /* Ensures the theme icon is visible and interactive */
+        #theme-toggle-icon { cursor: pointer; }
+
+        /* Style for active thumbnail */
+        .thumbnail-image-container.active {
+            border-color: theme('colors.indigo.500');
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md dark:shadow-xl transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight primary-color">STELLAR AUDIO</a>
+
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:primary-color transition duration-200">Shop</a>
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:primary-color transition duration-200">Discover</a>
+                <a href="#" class="text-gray-700 dark:text-gray-300 hover:primary-color transition duration-200">Support</a>
+            </nav>
+
+            <!-- Action Button & Theme Toggle -->
+            <div class="flex items-center space-x-3">
+                <button id="cart-button" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition">
+                    <!-- Shopping Cart Icon (lucide-react: shopping-cart) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 12.09a2 2 0 0 0 2 1.91h7.44a2 2 0 0 0 2-1.91L23 6H6"></path></svg>
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition">
+                    <svg id="theme-toggle-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <!-- Icon will be dynamically set by JS -->
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        
+        <!-- Product Grid Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            
+            <!-- Left Column: Image Gallery -->
+            <div class="space-y-6">
+                <!-- Main Image Container -->
+                <div class="bg-gray-200 dark:bg-gray-800 rounded-2xl p-8 aspect-square flex items-center justify-center shadow-lg transition-colors duration-300" id="main-image-container">
+                    <!-- Default Image (Obsidian Black) -->
+                    <img src=blqck.jpg
+                         alt="Stellar Audio X9 Headphones" 
+                         class="w-full max-w-lg object-cover rounded-xl transition-opacity duration-150" 
+                         id="product-image">
+                </div>
+
+                <!-- Thumbnail Gallery -->
+                <div class="hidden sm:flex space-x-4">
+                    <!-- Preview 1 -->
+                    <div data-thumbnail-src="https://placehold.co/800x800/1E293B/ffffff?text=X9+Front+View" 
+                         class="thumbnail-image-container w-20 h-20 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer opacity-75 hover:opacity-100 transition duration-200 border-2 border-transparent hover:border-indigo-500 flex items-center justify-center active">
+                         <img src="blqck.jpg" alt="Front View" class="w-full h-full object-cover rounded-md">
+                    </div>
+                    <!-- Preview 2 -->
+                    <div data-thumbnail-src="https://placehold.co/800x800/1E293B/ffffff?text=X9+Side+Profile"
+                         class="thumbnail-image-container w-20 h-20 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer opacity-75 hover:opacity-100 transition duration-200 border-2 border-transparent hover:border-indigo-500 flex items-center justify-center">
+                         <img src="blue.jpg" alt="Side Profile" class="w-full h-full object-cover rounded-md">
+                    </div>
+                    <!-- Preview 3 -->
+                    <div data-thumbnail-src="https://placehold.co/800x800/1E293B/ffffff?text=X9+Controls+Detail" 
+                         class="thumbnail-image-container w-20 h-20 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer opacity-75 hover:opacity-100 transition duration-200 border-2 border-transparent hover:border-indigo-500 flex items-center justify-center">
+                         <img src="silver.jpg" alt="Controls Detail" class="w-full h-full object-cover rounded-md">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Product Details -->
+            <div class="lg:sticky lg:top-24 h-fit">
+                <!-- Product Information -->
+                <h2 class="text-sm font-semibold uppercase tracking-wider primary-color mb-1">Wireless Audio</h2>
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">Stellar Audio X9</h1>
+                
+                <!-- Rating and SKU -->
+                <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-gray-200 dark:border-gray-800">
+                    <div class="flex items-center text-yellow-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.839l-3.374 2.458a1 1 0 00-.364 1.118l1.286 3.967c.3.921-.755 1.688-1.538 1.118l-3.374-2.458a1 1 0 00-1.176 0l-3.374 2.458c-.783.57-1.838-.197-1.538-1.118l1.286-3.967a1 1 0 00-.364-1.118L2.091 9.423c-.783-.599-.38-1.839.588-1.839h4.178a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.839l-3.374 2.458a1 1 0 00-.364 1.118l1.286 3.967c.3.921-.755 1.688-1.538 1.118l-3.374-2.458a1 1 0 00-1.176 0l-3.374 2.458c-.783.57-1.838-.197-1.538-1.118l1.286-3.967a1 1 0 00-.364-1.118L2.091 9.423c-.783-.599-.38-1.839.588-1.839h4.178a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.839l-3.374 2.458a1 1 0 00-.364 1.118l1.286 3.967c.3.921-.755 1.688-1.538 1.118l-3.374-2.458a1 1 0 00-1.176 0l-3.374 2.458c-.783.57-1.838-.197-1.538-1.118l1.286-3.967a1 1 0 00-.364-1.118L2.091 9.423c-.783-.599-.38-1.839.588-1.839h4.178a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.839l-3.374 2.458a1 1 0 00-.364 1.118l1.286 3.967c.3.921-.755 1.688-1.538 1.118l-3.374-2.458a1 1 0 00-1.176 0l-3.374 2.458c-.783.57-1.838-.197-1.538-1.118l1.286-3.967a1 1 0 00-.364-1.118L2.091 9.423c-.783-.599-.38-1.839.588-1.839h4.178a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300 dark:text-gray-600 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.967a1 1 0 00.95.69h4.178c.969 0 1.371 1.24.588 1.839l-3.374 2.458a1 1 0 00-.364 1.118l1.286 3.967c.3.921-.755 1.688-1.538 1.118l-3.374-2.458a1 1 0 00-1.176 0l-3.374 2.458c-.783.57-1.838-.197-1.538-1.118l1.286-3.967a1 1 0 00-.364-1.118L2.091 9.423c-.783-.599-.38-1.839.588-1.839h4.178a1 1 0 00.95-.69l1.286-3.967z"/></svg>
+                    </div>
+                    <span class="text-sm font-medium text-gray-500 dark:text-gray-400">4.1 (1,234 Reviews)</span>
+                    <span class="text-sm text-gray-400">|</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">SKU: STELLAR-X9-001</span>
+                </div>
+
+                <!-- Price -->
+                <p class="text-3xl sm:text-4xl font-extrabold primary-color mb-8">$299.99</p>
+
+                <!-- Color Selection -->
+                <div class="mb-8">
+                    <p class="text-lg font-semibold mb-3">Color: <span class="text-gray-600 dark:text-gray-300" id="selected-color-name">Obsidian Black</span></p>
+                    <div class="flex space-x-4">
+                        <!-- Color 1: Black -->
+                        <div data-color="Obsidian Black" data-hex="#1a1a1a" data-src="https://placehold.co/800x800/1E293B/ffffff?text=X9+Black" class="color-swatch selected w-10 h-10 rounded-full bg-gray-900 border-gray-900 transition-all duration-300" style="background-color: #1a1a1a;"></div>
+                        <!-- Color 2: Silver (Updated Image Placeholder) -->
+                        <div data-color="Lunar Silver" data-hex="#cccccc" data-src="https://placehold.co/800x800/A0AEC0/000000?text=X9+Silver" class="color-swatch w-10 h-10 rounded-full bg-gray-300 border-gray-300 transition-all duration-300" style="background-color: #cccccc;"></div>
+                        <!-- Color 3: Blue (Updated Image Placeholder) -->
+                        <div data-color="Cosmic Blue" data-hex="#3b82f6" data-src="https://placehold.co/800x800/4F46E5/ffffff?text=X9+Blue" class="color-swatch w-10 h-10 rounded-full bg-blue-500 border-blue-500 transition-all duration-300" style="background-color: #3b82f6;"></div>
+                    </div>
+                </div>
+
+                <!-- Call to Action (Buttons) -->
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+                    <button id="add-to-cart-btn" class="flex-1 px-8 py-3 text-lg font-bold rounded-xl shadow-xl text-white bg-primary hover:bg-primary-dark transition duration-300 transform hover:scale-[1.01]">
+                        Add to Cart
+                    </button>
+                    <button class="sm:w-1/3 px-8 py-3 text-lg font-bold rounded-xl text-indigo-600 dark:text-indigo-400 border border-indigo-600 dark:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-gray-800 transition duration-300">
+                        Buy Now
+                    </button>
+                </div>
+                
+                <!-- Simple message box for Cart feedback (replaces alert()) -->
+                <div id="cart-message-box" class="hidden p-3 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-lg font-medium transition-opacity duration-500" role="alert">
+                    <!-- Message content injected by JS -->
+                </div>
+
+                <!-- Delivery/Stock Information -->
+                <div class="mt-6 p-5 bg-gray-100 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 text-sm">
+                    <div class="flex items-center mb-2">
+                        <!-- Truck Icon (lucide-react: truck) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 primary-color mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="5" rx="2"></rect><path d="M7 21v-4"></path><path d="M17 21v-4"></path><path d="M5 17h14"></path><path d="M17 17a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-4H17v4Z"></path></svg>
+                        <p class="font-bold">Fast & Free Shipping</p>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">Order today and get it delivered within 3-5 business days. <span class="primary-color font-semibold">In Stock.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <div class="pt-20">
+            <!-- Product Details Tabs -->
+            <div class="max-w-4xl mx-auto">
+                <div class="border-b border-gray-200 dark:border-gray-700 mb-8">
+                    <nav class="-mb-px flex space-x-8" id="product-tabs">
+                        <button data-tab="description" class="tab-button py-4 px-1 text-base font-medium border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 active-tab">
+                            Description
+                        </button>
+                        <button data-tab="specs" class="tab-button py-4 px-1 text-base font-medium border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                            Specifications
+                        </button>
+                        <button data-tab="shipping" class="tab-button py-4 px-1 text-base font-medium border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:border-indigo-600 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                            Shipping & Returns
+                        </button>
+                    </nav>
+                </div>
+            
+                <div id="tab-content" class="text-gray-700 dark:text-gray-300 transition-opacity duration-300">
+                    <!-- Description Content -->
+                    <div data-content="description" class="tab-pane">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Unrivaled Sound Quality</h3>
+                        <p class="mb-4 leading-relaxed">The Stellar Audio X9 redefines high-fidelity listening. Featuring custom-engineered 50mm dynamic drivers and advanced acoustic chamber design, these headphones deliver pristine highs, articulate mids, and deep, resonant bass. Experience music the way the artist intended, with clarity and spatial accuracy previously unheard of in wireless audio.</p>
+                        <p class="leading-relaxed">With an impressive 30 hours of continuous playback and industry-leading active noise cancellation (ANC), the X9 is your perfect companion for long flights, busy commutes, and focused work sessions.</p>
+                    </div>
+                    
+                    <!-- Specifications Content -->
+                    <div data-content="specs" class="tab-pane hidden">
+                        <ul class="space-y-3 list-disc pl-5">
+                            <li><span class="font-semibold text-gray-900 dark:text-white">Driver Size:</span> 50mm Dynamic</li>
+                            <li><span class="font-semibold text-gray-900 dark:text-white">Battery Life:</span> Up to 30 hours (ANC on) / 45 hours (ANC off)</li>
+                            <li><span class="font-semibold text-gray-900 dark:text-white">Connectivity:</span> Bluetooth 5.3 and 3.5mm Aux</li>
+                            <li><span class="font-semibold text-gray-900 dark:text-white">Features:</span> Active Noise Cancellation (ANC), Transparency Mode, Multipoint Pairing</li>
+                            <li><span class="font-semibold text-gray-900 dark:text-white">Weight:</span> 285g</li>
+                        </ul>
+                    </div>
+
+                    <!-- Shipping Content -->
+                    <div data-content="shipping" class="tab-pane hidden">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Hassle-Free Policy</h3>
+                        <p class="mb-3">All orders are processed within 24 hours. Standard shipping is free and takes 3-5 business days. Express shipping options are available at checkout.</p>
+                        <p>We offer a 30-day money-back guarantee. If you are not completely satisfied with your Stellar Audio X9 headphones, simply return them within 30 days for a full refund, no questions asked.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products Section -->
+        <section class="py-20">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-8 text-center">You Might Also Like</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                
+                <!-- Related Product Card 1 -->
+                <a href="#" class="group block bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-4 transform hover:scale-[1.02]">
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg aspect-square mb-4 flex items-center justify-center">
+                        <img src="earbuds.jpg" alt="Stellar Earbuds" class="w-3/4 object-cover opacity-70 group-hover:opacity-100 transition duration-300">
+                    </div>
+                    <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">Earbuds</p>
+                    <h3 class="font-bold text-gray-900 dark:text-white truncate">Stellar Fit Pro</h3>
+                    <p class="text-lg primary-color font-bold mt-1">$149.00</p>
+                </a>
+                
+                <!-- Related Product Card 2 -->
+                <a href="#" class="group block bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-4 transform hover:scale-[1.02]">
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg aspect-square mb-4 flex items-center justify-center">
+                         <img src="speaker.jpg" alt="Stellar Speaker" class="w-3/4 object-cover opacity-70 group-hover:opacity-100 transition duration-300">
+                    </div>
+                    <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">Speaker</p>
+                    <h3 class="font-bold text-gray-900 dark:text-white truncate">Stellar Cube 360</h3>
+                    <p class="text-lg primary-color font-bold mt-1">$199.00</p>
+                </a>
+
+                <!-- Related Product Card 3 -->
+                <a href="#" class="group hidden md:block bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-4 transform hover:scale-[1.02]">
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg aspect-square mb-4 flex items-center justify-center">
+                         <img src="cable.jpg" alt="Stellar Cable" class="w-3/4 object-cover opacity-70 group-hover:opacity-100 transition duration-300">
+                    </div>
+                    <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">Accessory</p>
+                    <h3 class="font-bold text-gray-900 dark:text-white truncate">Braided Charging Cable</h3>
+                    <p class="text-lg primary-color font-bold mt-1">$29.00</p>
+                </a>
+
+                <!-- Related Product Card 4 -->
+                <a href="#" class="group hidden md:block bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition duration-300 p-4 transform hover:scale-[1.02]">
+                    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg aspect-square mb-4 flex items-center justify-center">
+                         <img src="promax.jpg" alt="Stellar X9 Pro" class="w-3/4 object-cover opacity-70 group-hover:opacity-100 transition duration-300">
+                    </div>
+                    <p class="text-sm font-semibold text-gray-500 dark:text-gray-400">Headphones</p>
+                    <h3 class="font-bold text-gray-900 dark:text-white truncate">Stellar X9 Pro Max</h3>
+                    <p class="text-lg primary-color font-bold mt-1">$499.00</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 py-10 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>&copy; 2024 Stellar Audio. All rights reserved. | Built with Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- THEME TOGGLE LOGIC ---
+        const htmlElement = document.documentElement;
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+
+        // Function to set the icon based on current theme
+        function updateThemeIcon(isDark) {
+            // Sun icon for Light Mode (to toggle to Dark)
+            const sunIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
+            // Moon icon for Dark Mode (to toggle to Light)
+            const moonIcon = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />';
+
+            themeToggleIcon.innerHTML = isDark ? sunIcon : moonIcon;
+        }
+
+        // Initialize theme based on preference or saved setting
+        let isDark = false;
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+            isDark = true;
+        } else {
+            htmlElement.classList.remove('dark');
+            isDark = false;
+        }
+        updateThemeIcon(isDark);
+
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                isDark = false;
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                isDark = true;
+            }
+            updateThemeIcon(isDark);
+        });
+
+        // --- PRODUCT INTERACTION LOGIC ---
+
+        const colorSwatches = document.querySelectorAll('.color-swatch');
+        const productImage = document.getElementById('product-image');
+        const selectedColorName = document.getElementById('selected-color-name');
+        const addToCartBtn = document.getElementById('add-to-cart-btn');
+        const cartMessageBox = document.getElementById('cart-message-box');
+        const thumbnailContainers = document.querySelectorAll('.thumbnail-image-container');
+
+        // State to track current selections
+        let currentSelection = {
+            color: 'Obsidian Black'
+        };
+
+        // 1. Color Selection Handler
+        colorSwatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                // Remove 'selected' class from all color swatches
+                colorSwatches.forEach(s => s.classList.remove('selected'));
+
+                // Add 'selected' class to the clicked swatch
+                swatch.classList.add('selected');
+
+                // Update product image source and text
+                const newColor = swatch.getAttribute('data-color');
+                const newSrc = swatch.getAttribute('data-src');
+                
+                productImage.src = newSrc;
+                selectedColorName.textContent = newColor;
+                currentSelection.color = newColor;
+
+                // Reset thumbnail active state to the first thumbnail (default view)
+                thumbnailContainers.forEach(t => t.classList.remove('active', 'border-indigo-500'));
+                if (thumbnailContainers.length > 0) {
+                     thumbnailContainers[0].classList.add('active', 'border-indigo-500');
+                }
+
+                // Simple transition effect for the main image
+                productImage.classList.add('opacity-0');
+                setTimeout(() => {
+                    productImage.classList.remove('opacity-0');
+                    productImage.classList.add('opacity-100');
+                }, 100);
+            });
+        });
+
+        // 2. Thumbnail Interaction Handler
+        thumbnailContainers.forEach(container => {
+            container.addEventListener('click', () => {
+                // Get the main image source from the thumbnail's data attribute
+                const newMainSrc = container.getAttribute('data-thumbnail-src');
+                
+                // Update main product image (this will show the selected color, but with the new view)
+                productImage.src = newMainSrc;
+
+                // Set active border only for thumbnails
+                thumbnailContainers.forEach(t => t.classList.remove('active', 'border-indigo-500'));
+                container.classList.add('active', 'border-indigo-500');
+
+                // Simple transition effect
+                productImage.classList.add('opacity-0');
+                setTimeout(() => {
+                    productImage.classList.remove('opacity-0');
+                    productImage.classList.add('opacity-100');
+                }, 100);
+            });
+        });
+
+        // Initialize first thumbnail as selected
+        if (thumbnailContainers.length > 0) {
+            thumbnailContainers[0].classList.add('active', 'border-indigo-500');
+        }
+
+
+        // 3. Add to Cart Handler (uses message box instead of alert)
+        addToCartBtn.addEventListener('click', () => {
+            const message = `Added ${currentSelection.color} Stellar Audio X9 to cart!`;
+            
+            // Show message box
+            cartMessageBox.textContent = message;
+            cartMessageBox.classList.remove('hidden', 'opacity-0');
+            cartMessageBox.classList.add('opacity-100');
+            
+            // Hide message after 4 seconds
+            setTimeout(() => {
+                cartMessageBox.classList.remove('opacity-100');
+                cartMessageBox.classList.add('opacity-0');
+                setTimeout(() => {
+                    cartMessageBox.classList.add('hidden');
+                }, 500); // Wait for fade transition to finish
+            }, 4000);
+        });
+
+
+        // 4. Tab Interaction Logic
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        // Set initial active state for description tab
+        document.querySelector('.tab-button[data-tab="description"]').classList.add('primary-color', 'border-indigo-600', 'dark:border-indigo-400');
+        document.querySelector('.tab-button[data-tab="description"]').classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+
+                // Update buttons: remove active styling from all, add to clicked button
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('primary-color', 'border-indigo-600', 'dark:border-indigo-400');
+                    btn.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+                });
+
+                button.classList.add('primary-color', 'border-indigo-600', 'dark:border-indigo-400');
+                button.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+                
+                // Update content: hide all panes, show target pane with fade
+                tabPanes.forEach(pane => {
+                    pane.classList.add('hidden', 'opacity-0');
+                });
+                
+                const targetPane = document.querySelector(`.tab-pane[data-content="${targetTab}"]`);
+                if (targetPane) {
+                    // Show target pane after a slight delay for better transition effect
+                    setTimeout(() => {
+                        targetPane.classList.remove('hidden');
+                        setTimeout(() => {
+                            targetPane.classList.remove('opacity-0');
+                            targetPane.classList.add('opacity-100');
+                        }, 50);
+                    }, 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
